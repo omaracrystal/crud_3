@@ -11,7 +11,7 @@ var Project = require('../models/projects.js')
 
 //get all projects
 router.get('/projects', function(req, res, next) {
-  propertyIsEnumerable(prop).findQ()
+  Project.findQ()
     .then(function (data) { res.json(data) })
     .catch(function (err) { res.send(err) })
     .done();
@@ -19,34 +19,34 @@ router.get('/projects', function(req, res, next) {
 
 //post all projects
 router.post('/projects', function(req, res, next) {
- new propertyIsEnumerable(prop)(req.body)
+ new Project(req.body)
     .saveQ()
     .then(function (data) { res.json(data) })
     .catch(function (err) { res.send(err) })
     .done();
 });
 
-//get one propertyIsEnumerable(prop)
-router.get('/propertyIsEnumerable(prop)/:id', function(req, res, next) {
-  propertyIsEnumerable(prop).findByIdQ(req.params.id)
+//get one projects
+router.get('/project/:id', function(req, res, next) {
+  Project.findByIdQ(req.params.id)
     .then(function (data) { res.json(data) })
     .catch(function (err) { res.send(err) })
     .done();
 });
 
-//update one propertyIsEnumerable(prop)
-router.put('/propertyIsEnumerable(prop)/:id', function(req, res, next) {
+//update one project
+router.put('/project/:id', function(req, res, next) {
   var update = (req.body);
   var options = {new: true};
-  propertyIsEnumerable(prop).findByIdAndUpdateQ(req.params.id, update, options)
+  Project.findByIdAndUpdateQ(req.params.id, update, options)
     .then(function (data) { res.json(data) })
     .catch(function (err) { res.send(err) })
     .done();
 });
 
-//delete one propertyIsEnumerable(prop)
-router.delete('/propertyIsEnumerable(prop)/:id', function(req, res, next) {
-  propertyIsEnumerable(prop).findByIdAndRemoveQ(req.params.id)
+//delete one project
+router.delete('/project/:id', function(req, res, next) {
+  Project.findByIdAndRemoveQ(req.params.id)
     .then(function (data) { res.json(data) })
     .catch(function (err) { res.send(err) })
     .done();

@@ -167,7 +167,7 @@ Go into ``app.js`` and add to the routes sections:
     - mongoose find function
   ```
   router.get('/projects', function(req, res, next) {
-    User.findQ()
+    Project.findQ()
       .then(function (data) { res.json(data) })
       .catch(function (err) { res.send(err) })
       .done();
@@ -182,7 +182,7 @@ Go into ``app.js`` and add to the routes sections:
 ```
   //get one project
   router.get('/project/:id', function(req, res, next) {
-    User.findByIdQ(req.params.id)
+    Project.findByIdQ(req.params.id)
       .then(function (data) { res.json(data) })
       .catch(function (err) { res.send(err) })
       .done();
@@ -197,7 +197,7 @@ Go into ``app.js`` and add to the routes sections:
   router.put('/project/:id', function(req, res, next) {
     var update = (req.body);
     var options = {new: true};
-    User.findByIdAndUpdateQ(req.params.id, update, options)
+    Project.findByIdAndUpdateQ(req.params.id, update, options)
       .then(function (data) { res.json(data) })
       .catch(function (err) { res.send(err) })
       .done();
@@ -210,7 +210,7 @@ Go into ``app.js`` and add to the routes sections:
 ```
   //delete one project
   router.delete('/project/:id', function(req, res, next) {
-    User.findByIdAndRemoveQ(req.params.id)
+    Project.findByIdAndRemoveQ(req.params.id)
       .then(function (data) { res.json(data) })
       .catch(function (err) { res.send(err) })
       .done();
@@ -267,7 +267,7 @@ Go into ``app.js`` and add to the routes sections:
   }
 ```
 
-# THE END!
+# THE END (of server side)!
 
 **Quick Reference for testing routes in terminal**
 ```
@@ -278,8 +278,21 @@ Go into ``app.js`` and add to the routes sections:
   http DELETE http://localhost:3000/api/project/id#
 ```
 
-
-
+# Front End
+- Create new folder `views` and file `index.html` under `client` folder
+- Create new files under `js` client side for `app, controllers, directives, filters, and services` and delete `main.js`
+- Then insert script tags at the end of the html page
+```
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="./js/app.js" type="text/javascript"></script>
+  <script src="./js/controllers.js" type="text/javascript"></script>
+  <script src="./js/directives.js" type="text/javascript"></script>
+  <script src="./js/filters.js" type="text/javascript"></script>
+  <script src="./js/services.js" type="text/javascript"></script>
+```
+- on top of `index.html` place `<html ng-app="myApp">` then in app.js add `var app = angular.module("myApp", []);`
+- create controller link in `index.html` -- `<body ng-controller="projectController">`
+- 
 
 
 
